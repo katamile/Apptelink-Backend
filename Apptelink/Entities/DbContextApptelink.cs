@@ -37,9 +37,9 @@ namespace Apptelink.Entities
             modelBuilder.Entity<Cliente>(entity =>
             {
                 entity.HasKey(e => e.IdCliente)
-                    .HasName("PK__Clientes__D594664259B5DEF5");
+                    .HasName("PK__Clientes__D59466422D1F3099");
 
-                entity.HasIndex(e => e.Identificacion, "UQ__Clientes__D6F931E59D0B3A09")
+                entity.HasIndex(e => e.Identificacion, "UQ__Clientes__D6F931E5E01323DE")
                     .IsUnique();
 
                 entity.Property(e => e.Apellido)
@@ -75,7 +75,7 @@ namespace Apptelink.Entities
             modelBuilder.Entity<DetalleFactura>(entity =>
             {
                 entity.HasKey(e => e.IdItem)
-                    .HasName("PK__DetalleF__51E8426276625232");
+                    .HasName("PK__DetalleF__51E84262C272D33A");
 
                 entity.Property(e => e.Cantidad).HasDefaultValueSql("((1))");
 
@@ -99,7 +99,7 @@ namespace Apptelink.Entities
             modelBuilder.Entity<Estado>(entity =>
             {
                 entity.HasKey(e => e.IdEstado)
-                    .HasName("PK__Estados__FBB0EDC18B98BA8C");
+                    .HasName("PK__Estados__FBB0EDC14E3680A8");
 
                 entity.Property(e => e.Descripcion)
                     .HasMaxLength(50)
@@ -113,14 +113,18 @@ namespace Apptelink.Entities
             modelBuilder.Entity<Factura>(entity =>
             {
                 entity.HasKey(e => e.IdFactura)
-                    .HasName("PK__Facturas__50E7BAF194741EE9");
+                    .HasName("PK__Facturas__50E7BAF1397D0476");
 
-                entity.HasIndex(e => e.NumeroFactura, "UQ__Facturas__CF12F9A6D974F487")
+                entity.HasIndex(e => e.NumeroFactura, "UQ__Facturas__CF12F9A698656B0D")
                     .IsUnique();
 
                 entity.Property(e => e.Igv)
                     .HasColumnType("decimal(18, 2)")
                     .HasColumnName("IGV");
+
+                entity.Property(e => e.NumeroFactura)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.PorcentajeIgv)
                     .HasColumnType("decimal(5, 2)")
@@ -140,9 +144,9 @@ namespace Apptelink.Entities
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.HasKey(e => e.IdProducto)
-                    .HasName("PK__Producto__0988921053B65606");
+                    .HasName("PK__Producto__098892109301D8B7");
 
-                entity.HasIndex(e => e.Codigo, "UQ__Producto__06370DACAFA41CC1")
+                entity.HasIndex(e => e.Codigo, "UQ__Producto__06370DAC2110595B")
                     .IsUnique();
 
                 entity.Property(e => e.Codigo)
@@ -168,10 +172,10 @@ namespace Apptelink.Entities
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuarios__5B65BF9747ABEDE7");
+                    .HasName("PK__Usuarios__5B65BF97DE08EDCA");
 
                 entity.Property(e => e.Contraseña)
-                    .HasMaxLength(50)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Estado)
